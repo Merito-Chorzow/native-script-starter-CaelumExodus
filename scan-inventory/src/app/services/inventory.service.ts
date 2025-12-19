@@ -8,18 +8,22 @@ export class InventoryService {
   products = this._products.asReadonly();
 
   load() {
-    // symulacja API GET
     this._products.set([
       { id: '1', name: 'Laptop', code: 'LP-0011' }
     ]);
   }
 
   add(product: Product) {
-    // symulacja API POST
     this._products.update(p => [...p, product]);
   }
 
   getById(id: string) {
     return this._products().find(p => p.id === id);
+  }
+
+  update(updated: Product) {
+    this._products.update(products =>
+      products.map(p => (p.id === updated.id ? updated : p))
+    );
   }
 }

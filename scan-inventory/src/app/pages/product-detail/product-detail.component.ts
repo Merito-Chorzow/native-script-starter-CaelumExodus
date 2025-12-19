@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NativeScriptCommonModule } from '@nativescript/angular';
 import { InventoryService } from '../../services/inventory.service';
 
@@ -13,6 +13,11 @@ import { InventoryService } from '../../services/inventory.service';
       <StackLayout>
         <Label [text]="product.name"></Label>
         <Label [text]="product.code"></Label>
+
+        <Button
+          text="Edit"
+          (tap)="edit()">
+        </Button>
       </StackLayout>
     } @else {
       <Label text="Not found"></Label>
@@ -26,6 +31,11 @@ export class ProductDetailComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private inventory: InventoryService
-  ) {}
+    private inventory: InventoryService,
+    private router: Router,
+) {}
+
+  edit() {
+    this.router.navigate(['/edit', this.product!.id]);
+  }
 }
