@@ -7,21 +7,26 @@ import { InventoryService } from '../../services/inventory.service';
   standalone: true,
   imports: [NativeScriptCommonModule],
   template: `
-    <ActionBar title="Product Details" />
+    <ActionBar title="Product Details" class="bg-gray-800 text-white" />
 
-    @if(product) {
-      <StackLayout>
-        <Label [text]="product.name"></Label>
-        <Label [text]="product.code"></Label>
+    <ScrollView class="p-4 bg-gray-50">
+      @if (product) {
+        <StackLayout class="bg-white p-4 rounded-lg shadow space-y-3">
 
-        <Button
-          text="Edit"
-          (tap)="edit()">
-        </Button>
-      </StackLayout>
-    } @else {
-      <Label text="Not found"></Label>
-    }
+          <Label [text]="product.name" class="text-xl font-semibold text-gray-800"></Label>
+          <Label [text]="product.code" class="text-gray-600"></Label>
+
+          <Button
+            text="Edit"
+            (tap)="edit()"
+            class="bg-gray-800 text-white rounded-lg py-2 shadow"
+          ></Button>
+
+        </StackLayout>
+      } @else {
+        <Label text="Not found" class="text-red-500 font-medium text-center mt-4"></Label>
+      }
+    </ScrollView>
   `
 })
 export class ProductDetailComponent {

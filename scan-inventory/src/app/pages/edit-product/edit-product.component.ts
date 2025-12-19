@@ -8,18 +8,35 @@ import { InventoryService } from '../../services/inventory.service';
   standalone: true,
   imports: [NativeScriptCommonModule, ReactiveFormsModule, TextValueAccessor],
   template: `
-    <ActionBar title="Edit Product" />
+    <ActionBar title="Edit Product" class="bg-gray-800 text-white" />
 
-    <StackLayout *ngIf="product; else notFound" [formGroup]="form">
-      <TextField formControlName="name" hint="Name"></TextField>
-      <TextField formControlName="code" hint="Code"></TextField>
+    <ScrollView class="p-4 bg-gray-50">
+      @if (product) {
+        <StackLayout [formGroup]="form" class="space-y-4">
 
-      <Button text="Save changes" (tap)="save()"></Button>
-    </StackLayout>
+          <TextField
+            formControlName="name"
+            hint="Name"
+            class="border border-gray-300 rounded-lg p-3 bg-white shadow-sm"
+          ></TextField>
 
-    <ng-template #notFound>
-      <Label text="Product not found"></Label>
-    </ng-template>
+          <TextField
+            formControlName="code"
+            hint="Code"
+            class="border border-gray-300 rounded-lg p-3 bg-white shadow-sm"
+          ></TextField>
+
+          <Button
+            text="Save changes"
+            (tap)="save()"
+            class="bg-gray-800 text-white rounded-lg py-2 shadow"
+          ></Button>
+
+        </StackLayout>
+      } @else {
+        <Label text="Product not found" class="text-red-500 font-medium text-center mt-4"></Label>
+      }
+    </ScrollView>
   `
 })
 export class EditProductComponent {

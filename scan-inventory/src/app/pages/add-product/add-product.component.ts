@@ -9,20 +9,43 @@ import { CameraService } from '../../services/camera.service';
   standalone: true,
   imports: [NativeScriptCommonModule, ReactiveFormsModule, TextValueAccessor],
   template: `
-    <ActionBar title="Add Product" />
+    <ActionBar title="Add Product" class="bg-gray-800 text-white" />
 
-    <StackLayout [formGroup]="form">
-      <TextField formControlName="name" hint="Name"></TextField>
-      <TextField formControlName="code" hint="Code"></TextField>
+    <ScrollView class="p-4 bg-gray-50">
+      <StackLayout [formGroup]="form" class="space-y-4">
 
-      <Button text="Take Photo" (tap)="photo()"></Button>
+        <TextField
+          formControlName="name"
+          hint="Name"
+          class="border border-gray-300 rounded-lg p-3 bg-white shadow-sm"
+        ></TextField>
 
-      @if (image()) {
-      <Label text="Photo added"></Label>
-      }
+        <TextField
+          formControlName="code"
+          hint="Code"
+          class="border border-gray-300 rounded-lg p-3 bg-white shadow-sm"
+        ></TextField>
 
-      <Button text="Save" (tap)="save()"></Button>
-    </StackLayout>
+        <Button
+          text="Take Photo"
+          (tap)="photo()"
+          class="bg-gray-700 text-white rounded-lg py-2 shadow"
+        ></Button>
+
+        @if (image()) {
+          <Label text="Photo added" class="text-green-600 font-medium"></Label>
+        } @else {
+          <Label text="No photo yet" class="text-gray-500"></Label>
+        }
+
+        <Button
+          text="Save"
+          (tap)="save()"
+          class="bg-gray-800 text-white rounded-lg py-2 shadow"
+        ></Button>
+
+      </StackLayout>
+    </ScrollView>
   `
 })
 export class AddProductComponent {

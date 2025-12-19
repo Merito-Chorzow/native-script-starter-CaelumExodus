@@ -7,15 +7,18 @@ import { InventoryService } from '../../services/inventory.service';
   standalone: true,
   imports: [NativeScriptCommonModule],
   template: `
-    <ActionBar title="Inventory">
-      <ActionItem text="+" (tap)="goAdd()" ios.position="right" />
+    <ActionBar title="Inventory" class="bg-gray-800 text-white">
+      <ActionItem text="+" (tap)="goAdd()" ios.position="right" class="font-bold text-white" />
     </ActionBar>
 
-    <ListView [items]="products()">
+    <ListView [items]="products()" class="bg-gray-50 p-2">
       <ng-template let-item="item">
-        <StackLayout (tap)="open(item.id)">
-          <Label [text]="item.name"></Label>
-          <Label [text]="item.code" class="text-xs"></Label>
+        <StackLayout
+          (tap)="open(item.id)"
+          class="bg-white p-4 mb-2 rounded-lg shadow"
+        >
+          <Label [text]="item.name" class="text-lg font-semibold text-gray-800"></Label>
+          <Label [text]="item.code" class="text-xs text-gray-500 mt-1"></Label>
         </StackLayout>
       </ng-template>
     </ListView>
