@@ -1,28 +1,46 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Uu9lUx8_)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=21969721&assignment_repo_type=AssignmentRepo)
-# NativeScript: Scan Inventory
+# Scan Inventory
 
-## Cel
-Zbuduj podstawową aplikację w **NativeScript używając framework Angular**, która używa **natywnej funkcji** oraz **komunikuje się z API**, z **3–4 widokami**.
+A mobile app built with **NativeScript** and **Angular** for scanning and managing inventory items.
 
-## Zakres i wymagania funkcjonalne
-- **Natywna funkcja (min. 1):** wybierz i uzasadnij (np. aparat/kamera – skan/zdjęcie, pliki, geolokalizacja, latarka, wibracje).
-- **API (min. 1 endpoint):** pobranie listy elementów lub zapis nowego.
-- **Widoki (3–4):**
-  1. **Lista produktów** (nazwa, kod, mini-status).
-  2. **Szczegóły produktu** (opis, zdjęcie/skan, akcje: usuń/edytuj).
-  3. **Dodaj produkt** (formularz + akcja natywna, np. „zeskanuj/zdjęcie”).
-  4. *(Opcjonalnie)* **Ustawienia** (np. preferencje, tryb offline).
-- **Walidacja:** minimalna w formularzu (np. wymagane pola).
+---
 
-## Testowanie lokalne (w trakcie developmentu)
-- Uruchom na **urządzeniu/emulatorze**.
-- Pokaż: dodanie produktu z użyciem **natywnej funkcji** (np. zdjęcie/skan), pojawienie się na liście.
-- Pokaż komunikację z **API** (pobranie/zapis) i zachowanie przy błędach/uprawnieniach.
+## Prerequisites
 
-## Definition of Done (DoD)
-- [ ] 3–4 widoki + nawigacja.
-- [ ] Co najmniej 1 **natywna funkcja**.
-- [ ] Integracja z **API** (GET/POST).
-- [ ] Walidacja formularza + podstawowa obsługa błędów.
-- [ ] Aktualizacja `README.md`, zrzuty ekranów, min. 3 commity.
+Before running the app, make sure you have the following installed on your system:
+
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [NativeScript CLI](https://nativescript.org/)
+- [Android Studio](https://developer.android.com/studio) (with Android SDK and emulator configured)
+
+> ⚠️ **Note:** You must have an Android emulator running or a physical Android device connected to your PC to launch the app.
+
+---
+
+## Installation
+
+1. Install dependencies using npm:
+
+   npm install
+
+---
+
+## Running the App
+
+### On Android Emulator or Device
+
+1. Ensure your Android emulator is running or your physical device is connected.
+2. Run the app with:
+
+   ns run android
+
+   This command will build the app and install it on your selected Android emulator or connected device.
+
+---
+
+## Development
+
+If you make code changes and need to rebuild, stop the current process and rerun:
+
+ns run android
+
+---
