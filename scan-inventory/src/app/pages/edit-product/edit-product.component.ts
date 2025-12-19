@@ -10,32 +10,20 @@ import { InventoryService } from '../../services/inventory.service';
   template: `
     <ActionBar title="Edit Product" />
 
-    @if (product) {
-      <StackLayout [formGroup]="form">
-        <TextField
-          formControlName="name"
-          hint="Name">
-        </TextField>
+    <StackLayout *ngIf="product; else notFound" [formGroup]="form">
+      <TextField formControlName="name" hint="Name"></TextField>
+      <TextField formControlName="code" hint="Code"></TextField>
 
-        <TextField
-          formControlName="code"
-          hint="Code">
-        </TextField>
+      <Button text="Save changes" (tap)="save()"></Button>
+    </StackLayout>
 
-        <Button
-          text="Save changes"
-          (tap)="save()">
-        </Button>
-      </StackLayout>
-    } @else {
+    <ng-template #notFound>
       <Label text="Product not found"></Label>
-    }
+    </ng-template>
   `
 })
 export class EditProductComponent {
-  product = this.inventory.getById(
-    this.route.snapshot.params['id']
-  );
+  product = this.inventory.getById(this.route.snapshot.params['id']);
 
   form = this.fb.nonNullable.group({
     name: ['', Validators.required],
@@ -69,6 +57,6 @@ export class EditProductComponent {
       code
     });
 
-    this.router.navigate(['/detail', this.product.id]);
+    this.router.navigate(['/']);
   }
 }

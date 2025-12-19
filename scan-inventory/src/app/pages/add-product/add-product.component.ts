@@ -17,14 +17,11 @@ import { CameraService } from '../../services/camera.service';
 
       <Button text="Take Photo" (tap)="photo()"></Button>
 
-      @if(image()) {
-        <Label text="Photo added"></Label>
+      @if (image()) {
+      <Label text="Photo added"></Label>
       }
 
-      <Button
-        text="Save"
-        (tap)="save()"
-        ></Button>
+      <Button text="Save" (tap)="save()"></Button>
     </StackLayout>
   `
 })
@@ -44,7 +41,10 @@ export class AddProductComponent {
   ) {}
 
   async photo() {
-    this.image.set(await this.camera.takePhoto());
+    const photoPath = await this.camera.takePhoto();
+    if (photoPath) {
+      this.image.set(photoPath);
+    }
   }
 
   save() {

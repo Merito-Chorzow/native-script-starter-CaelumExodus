@@ -8,9 +8,11 @@ export class InventoryService {
   products = this._products.asReadonly();
 
   load() {
-    this._products.set([
-      { id: '1', name: 'Laptop', code: 'LP-0011' }
-    ]);
+    if (this._products().length === 0) {
+      this._products.set([
+        { id: '1', name: 'Laptop', code: 'LP-0011' }
+      ]);
+    }
   }
 
   add(product: Product) {
